@@ -31,54 +31,74 @@ $('#23S').on('click', getStop)
 $('#usS').on('click', getStop)
 $('#apS').on('click', getStop)
 
-var n = ['tsN', '34N', '28N', '23N', 'usN', '8N'];
+var lineN = ['tsN', '34N', '28N', '23N', 'usN', '8N'];
 
-var l= ['8L', '6L', 'usL', '3L', '1L'];
+var lineN= ['8L', '6L', 'usL', '3L', '1L'];
 
-var s = ['gcS', '33S', '28S', '23S', 'usS', 'apS'];
-
-
+var line6 = ['gcS', '33S', '28S', '23S', 'usS', 'apS'];
 
 
-//listening to class='lineN'
-function getLine() {
+
+
+//check if the two lines are the same
+function changeLines (bothLines) {
+	console.log(bothLines[0]);
+	console.log(bothLines[1]);
+	if (bothLines.length > 1) {
+		if (bothLines[0] === bothLines[1]) {
+			console.log('same line');
+		} else {
+			console.log('different lines')
+		}
+	}
 	
+}
+
+
+
+//put lines from clicked buttons in an array
+var bothLines = [];
+function getBothLines(line) {
+	var lineX = bothLines.push(line);
+	changeLines(bothLines);
 };
 
 
-function numberOfStops (bothStops) {
-	var totalStops = Math.abs(n.indexOf(bothStops[0]) - n.indexOf(bothStops[1]));
 
+//return number of stops 
+function numberOfStops (bothStops) {
+	var totalStops = Math.abs(lineN.indexOf(bothStops[0]) - lineN.indexOf(bothStops[1]));
+	//if more than 1 button is clicked, 
 	if(bothStops.length > 1) {
-	// console.log(n.indexOf(bothStops[0]));
-	// console.log(n.indexOf(bothStops[1]));
-	// console.log(bothStops);
-	console.log(totalStops);
-	// console.log(bothStops.length);
+	// console.log(totalStops);
 	};
 
 }
 
-
+//put stops from clicked buttons in an array
 var bothStops = [];
-function getBothStop(stop) {
+function getBothStops(stop) {
 	var stopX = bothStops.push(stop);
 	numberOfStops(bothStops);
 }
 
-
-
-//listening to id='23N'
-function getStop() {
-	stop = $(this).attr('id');
-	getBothStop(stop);
+//get input lines from the button
+function getLine() {
+	var line = $(this).attr('class');
+	getBothLines(line);
+	// console.log(line);
 }
 
-	// console.log(stop);
+
+//get input stops from the button
+function getStop() {
+	var stop = $(this).attr('id');
+	getBothStops(stop);
+}
 
 
 
-//listening to id='23N'
+
 
 
 // function numberOfStops () {
