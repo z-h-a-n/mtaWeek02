@@ -33,25 +33,39 @@ $('#apS').on('click', getStop)
 
 var lineN = ['tsN', '34N', '28N', '23N', 'usN', '8N'];
 
-var lineN= ['8L', '6L', 'usL', '3L', '1L'];
+var lineL= ['8L', '6L', 'usL', '3L', '1L'];
 
 var line6 = ['gcS', '33S', '28S', '23S', 'usS', 'apS'];
 
 
 
+// function stopsCal ()
 
-//check if the two lines are the same
+
+// check if the two lines are the same
 function changeLines (bothLines) {
-	console.log(bothLines[0]);
-	console.log(bothLines[1]);
+	// console.log(bothLines[0]);
+	// console.log(bothLines[1]);
 	if (bothLines.length > 1) {
 		if (bothLines[0] === bothLines[1]) {
+
 			console.log('same line');
 		} else {
 			console.log('different lines')
 		}
 	}
 	
+}
+
+
+//return number of stops 
+function numberOfStops (bothStops) {
+	var totalStops = Math.abs(lineN.indexOf(bothStops[0]) - lineN.indexOf(bothStops[1]));
+	//if more than 1 button is clicked, 
+	if(bothStops.length > 1) {
+		// return totalStops;
+		console.log(totalStops);
+	}
 }
 
 
@@ -65,24 +79,20 @@ function getBothLines(line) {
 
 
 
-//return number of stops 
-function numberOfStops (bothStops) {
-	var totalStops = Math.abs(lineN.indexOf(bothStops[0]) - lineN.indexOf(bothStops[1]));
-	//if more than 1 button is clicked, 
-	if(bothStops.length > 1) {
-	// console.log(totalStops);
-	};
 
-}
+
+
 
 //put stops from clicked buttons in an array
 var bothStops = [];
 function getBothStops(stop) {
 	var stopX = bothStops.push(stop);
-	numberOfStops(bothStops);
+	numberOfStops (bothStops);
+	// console.log(bothStops);
+	// console.log(bothStops.length);
 }
 
-//get input lines from the button
+// get input lines from the button
 function getLine() {
 	var line = $(this).attr('class');
 	getBothLines(line);
@@ -92,6 +102,7 @@ function getLine() {
 
 //get input stops from the button
 function getStop() {
+	// debugger;
 	var stop = $(this).attr('id');
 	getBothStops(stop);
 }
@@ -99,6 +110,7 @@ function getStop() {
 
 
 
+//from old previous mta assignment
 
 
 // function numberOfStops () {
